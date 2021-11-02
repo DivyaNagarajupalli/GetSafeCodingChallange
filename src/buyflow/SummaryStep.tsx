@@ -1,14 +1,23 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-interface SummaryStepProps {
+interface SummaryStepProps1 {
   collectedData: {
-    email: string
-    age: number
-  }
+    email: string;
+    age: number;
+  };
 }
 
-const SummaryStep: React.FC<SummaryStepProps> = (props) => {
+interface SummaryStepProps2 {
+  collectedData: {
+    email: string;
+    age: number;
+    FirstName: string;
+    LastName: string;
+  };
+}
+
+const SummaryStep1: React.FC<SummaryStepProps1> = (props) => {
   return (
     <>
       <div>Email: {props.collectedData.email}</div>
@@ -17,7 +26,21 @@ const SummaryStep: React.FC<SummaryStepProps> = (props) => {
         <Link to="/purchased=dev_ins">Purchase</Link>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default SummaryStep
+const SummaryStep2: React.FC<SummaryStepProps2> = (props) => {
+  return (
+    <>
+      <div>Email: {props.collectedData.email}</div>
+      <div>Age: {props.collectedData.age}</div>
+      <div>FirstName: {props.collectedData.FirstName}</div>
+      <div>LastName: {props.collectedData.LastName}</div>
+      <div>
+        <Link to="/purchased=dev_ins">Purchase</Link>
+      </div>
+    </>
+  );
+};
+
+export { SummaryStep1, SummaryStep2 };
