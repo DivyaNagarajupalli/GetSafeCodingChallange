@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useVal from "./useVal";
 
 interface LastNameProps {
   cb: (field: string, value: string) => void;
@@ -6,19 +7,19 @@ interface LastNameProps {
 
 const LastName: React.FC<LastNameProps> = (props) => {
   const [LastName, setLastname] = useState("");
+  const disable = useVal(LastName);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLastname(e.target.value);
+  };
   return (
     <>
       <div>
         LastName:{" "}
-        <input
-          type="text"
-          onChange={({ target: { value } }) => {
-            setLastname(value);
-          }}
-          value={LastName}
-        ></input>
+        <input type="text" onChange={handleChange} value={LastName}></input>
       </div>
-      <button onClick={() => props.cb("LastName", LastName)}>Next</button>
+      <button disabled={disable} onClick={() => props.cb("LastName", LastName)}>
+        Next
+      </button>
     </>
   );
 };

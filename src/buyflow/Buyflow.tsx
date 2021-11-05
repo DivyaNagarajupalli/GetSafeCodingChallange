@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import AgeStep from "./AgeStep";
 import EmailStep from "./EmailStep";
 import FirstName from "./FirstnameStep";
-
 import LastName from "./LastnameStep";
-
 import { SummaryStep1, SummaryStep2 } from "./SummaryStep";
 
 interface BuyflowProps {

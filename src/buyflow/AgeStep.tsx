@@ -1,26 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import useVal from "./useVal";
 
 interface AgeStepProps {
-  cb: (field: string, value: number) => void
+  cb: (field: string, value: number) => void;
 }
 
 const AgeStep: React.FC<AgeStepProps> = (props) => {
-  const [age, setAge] = useState(0)
+  const [age, setAge] = useState(0);
+  const disable = useVal(age.toString());
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAge(Number(e.target.value));
+  };
+
   return (
     <>
       <div>
-        Age:{' '}
+        Age:{" "}
         <input
           type="number"
-          onChange={({ target: { value } }) => {
-            setAge(Number(value))
-          }}
+          min="1"
+          max="80"
+          onChange={handleChange}
           value={age}
         ></input>
       </div>
-      <button onClick={() => props.cb('age', age)}>Next</button>
+      <button disabled={disable} onClick={() => props.cb("age", age)}>
+        Next
+      </button>
     </>
-  )
-}
+  );
+};
 
-export default AgeStep
+export default AgeStep;
