@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import useVal from "./useVal";
+import Iprops from "./Interfaceprops";
 
-interface AgeStepProps {
-  cb: (field: string, value: number) => void;
-}
-
-const AgeStep: React.FC<AgeStepProps> = (props) => {
-  const [age, setAge] = useState(0);
+const AgeStep: React.FC<Iprops> = (props) => {
+  const [age, setAge] = useState(1);
   const disable = useVal(age.toString());
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

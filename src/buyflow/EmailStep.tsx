@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import useVal from "./useVal";
+import Iprops from "./Interfaceprops";
 
-interface EmailStepProps {
-  cb: (field: string, value: string) => void;
-}
-
-const EmailStep: React.FC<EmailStepProps> = (props) => {
+const EmailStep: React.FC<Iprops> = (props) => {
   const [email, setEmail] = useState("");
   const disable = useVal(email);
 

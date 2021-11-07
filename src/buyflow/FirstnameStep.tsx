@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import useVal from "./useVal";
+import Iprops from "./Interfaceprops";
 
-interface FirstNameProps {
-  cb: (field: string, value: string) => void;
-}
-
-const FirstName: React.FC<FirstNameProps> = (props) => {
-  const [FirstName, setFirstname] = useState("");
-  const disable = useVal(FirstName);
+const FirstName: React.FC<Iprops> = (props) => {
+  const [firstname, setfirstname] = useState("");
+  const disable = useVal(firstname);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFirstname(e.target.value);
+    setfirstname(e.target.value);
   };
 
   return (
     <>
       <div>
         FirstName:{" "}
-        <input type="text" onChange={handleChange} value={FirstName}></input>
+        <input type="text" onChange={handleChange} value={firstname}></input>
       </div>
       <button
         disabled={disable}
-        onClick={() => props.cb("FirstName", FirstName)}
+        onClick={() => props.cb("firstname", firstname)}
       >
         Next
       </button>

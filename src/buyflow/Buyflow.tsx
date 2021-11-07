@@ -5,7 +5,7 @@ import FirstName from "./FirstnameStep";
 import LastName from "./LastnameStep";
 import { SummaryStep1, SummaryStep2 } from "./SummaryStep";
 
-interface BuyflowProps {
+interface IBuyflowProps {
   productId: ProductIds;
 }
 
@@ -19,14 +19,17 @@ const PRODUCT_IDS_TO_NAMES = {
   [ProductIds.desIns]: "Designer Insurance"
 };
 
-const Buyflow1: React.FC<BuyflowProps> = (props) => {
+const Buyflow1: React.FC<IBuyflowProps> = (props) => {
   const [currentStep, setStep] = useState("email");
-  const [collectedData, updateData] = useState({
+  const [collectedData, setCollectedData] = useState({
     email: "",
-    age: 0
+    age: 0,
+    firstname: "",
+    lastname: ""
   });
+
   const getStepCallback = (nextStep: string) => (field: string, value: any) => {
-    updateData({ ...collectedData, [field]: value });
+    setCollectedData({ ...collectedData, [field]: value });
     setStep(nextStep);
   };
 
@@ -44,16 +47,16 @@ const Buyflow1: React.FC<BuyflowProps> = (props) => {
   );
 };
 
-const Buyflow2: React.FC<BuyflowProps> = (props) => {
+const Buyflow2: React.FC<IBuyflowProps> = (props) => {
   const [currentStep, setStep] = useState("email");
-  const [collectedData, updateData] = useState({
+  const [collectedData, setCollectedData] = useState({
     email: "",
     age: 0,
     firstname: "",
     lastname: ""
   });
   const getStepCallback = (nextStep: string) => (field: string, value: any) => {
-    updateData({ ...collectedData, [field]: value });
+    setCollectedData({ ...collectedData, [field]: value });
     setStep(nextStep);
   };
 
